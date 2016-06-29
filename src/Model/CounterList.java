@@ -5,9 +5,17 @@ import java.util.ArrayList;
 public class CounterList {
 
 	private ArrayList <Counter> list;
+	
+	public static CounterList instance;
 
-	public CounterList () {
+	private CounterList () {
 		setList(new ArrayList<Counter> ());
+	}
+	
+	public static void  createInstance () {
+		if (instance == null) {
+			instance = new CounterList ();
+		}
 	}
 
 	public void remove (int index) {

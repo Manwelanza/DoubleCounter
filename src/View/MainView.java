@@ -37,6 +37,10 @@ public class MainView {
 			setClientView(new ClientView(getWidthAdmin(), getWidthClient(), getHeightClient()));
 		}
 	}
+	
+	public void resetClient(int count) {
+		getClientView().resetClient(count);
+	}
 
 	public void setAdminSize (int weidth, int height) {
 		setWidthAdmin(weidth);

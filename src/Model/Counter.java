@@ -10,6 +10,11 @@ public class Counter {
 		setCounter(0);
 	}
 	
+	public Counter (String title) {
+		setTitle(title);
+		setCounter(0);
+	}
+	
 	public Counter (String title, int counter) {
 		setTitle(title);
 		setCounter(counter);

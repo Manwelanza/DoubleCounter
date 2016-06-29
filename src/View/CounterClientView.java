@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,19 +30,29 @@ public class CounterClientView extends JPanel{
 	private void initPanel (String title, int counter) {
 		setLayout(new BorderLayout(2, 3));
 		
+		initTitleLabel(title);
+		initCounterLabel(counter);
+		
+		add(getTitleLabel(), BorderLayout.NORTH);
+		add (getCounterLabel(), BorderLayout.CENTER);
+		setVisible(true);
+	}
+	
+	private void initTitleLabel (String title) {
 		setTitleLabel(new JLabel (title));
 		getTitleLabel().setHorizontalAlignment(JLabel.CENTER);
 		getTitleLabel().setVerticalAlignment(JLabel.CENTER);
 		getTitleLabel().setBorder(new LineBorder(Color.BLUE, 3, true));
-		
+	}
+	
+	private void initCounterLabel (int counter) {
 		setCounterLabel(new JLabel(Integer.toString(counter)));
 		getCounterLabel().setHorizontalAlignment(JLabel.CENTER);
 		getCounterLabel().setVerticalAlignment(JLabel.CENTER);
 		getCounterLabel().setBorder(new LineBorder(Color.BLACK, 2, true));
 		
-		add(getTitleLabel(), BorderLayout.NORTH);
-		add (getCounterLabel(), BorderLayout.CENTER);
-		setVisible(true);
+		Font font = new Font ("Dialog", Font.BOLD, 144);
+		getCounterLabel().setFont(font);
 	}
 
 	public String getTitle() {
