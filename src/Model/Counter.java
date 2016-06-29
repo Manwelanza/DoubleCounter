@@ -15,6 +15,36 @@ public class Counter {
 		setCounter(counter);
 	}
 
+	public void reset () {
+		setCounter(0);
+	}
+	
+	public void increase () {
+		increase (1);
+	}
+	
+	public void increase (int count) {
+		if (count < 0) {
+			throw new NumberFormatException("The value must be greater than 0");
+		}
+		else {
+			setCounter(getCounter() + count);
+		}
+	}
+	
+	public void decrease () {
+		decrease(1);
+	}
+	
+	public void decrease (int count) {
+		if (count < 0) {
+			throw new NumberFormatException("The value must be greater than 0");
+		}
+		else {
+			setCounter(getCounter() - count);
+		}
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -27,7 +57,7 @@ public class Counter {
 		return counter;
 	}
 
-	public void setCounter(int counter) {
+	private void setCounter(int counter) {
 		this.counter = counter;
 	}
 
