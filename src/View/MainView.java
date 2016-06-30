@@ -1,5 +1,7 @@
 package View;
 
+import javax.swing.JButton;
+
 public class MainView {
 
 	public static final int STANDAR_WIDTH = 800;
@@ -38,8 +40,21 @@ public class MainView {
 		}
 	}
 	
-	public void resetClient(int count) {
-		getClientView().resetClient(count);
+	public void setAddButton (JButton button) {
+		getAdminView().setAddButton(button);
+		getAdminView().addButton();
+	}
+	
+	public void resetClient() {
+		getClientView().resetClient();
+	}
+	
+	public void loadCounterClient (CounterClientView counter) {
+		getClientView().loadCounters(counter);
+	}
+	
+	public void loadCounterAdmin (CounterAdminView counter) {
+		getAdminView().loadCounters(counter);
 	}
 
 	public void setAdminSize (int weidth, int height) {

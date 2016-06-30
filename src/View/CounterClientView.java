@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 
 @SuppressWarnings("serial")
 public class CounterClientView extends JPanel{
@@ -55,6 +54,14 @@ public class CounterClientView extends JPanel{
 		getCounterLabel().setFont(font);
 	}
 
+	public void changeCounter (int number) {
+		getCounterLabel().setText(Integer.toString(number));
+	}
+	
+	public void changeTitle (String title) {
+		getTitleLabel().setText(title);
+	}
+	
 	public String getTitle() {
 		return getTitleLabel().getText();
 	}

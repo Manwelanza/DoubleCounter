@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -13,14 +12,11 @@ public class ClientView extends JFrame{
 	public ClientView (int weidthAdmin, int weidth, int height) {
 		setBounds(weidthAdmin + 10, 10, weidth, height);
 		setTitle("Cliente");
-		initLayout();
 		setVisible(true);
 	}
 	
-	public void resetClient (int count) {
-		removeAll();
-		initLayout(count);
-		loadCounters();
+	public void resetClient () {
+		getContentPane().removeAll();
 	}
 	
 	private void initLayout (int count) {
@@ -37,7 +33,10 @@ public class ClientView extends JFrame{
 		
 	}
 	
-	private void loadCounters () {
-		
+	public void loadCounters (CounterClientView counter) {
+		initLayout (getContentPane().getComponentCount() + 1);
+		System.out.println(getContentPane().getComponentCount());
+		add (counter); 
+		setVisible(true);
 	}
 }

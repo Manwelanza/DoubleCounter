@@ -47,6 +47,9 @@ public class Counter {
 		}
 		else {
 			setCounter(getCounter() - count);
+			if (getCounter() < 0) {
+				setCounter(0);
+			}
 		}
 	}
 	
