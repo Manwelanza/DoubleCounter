@@ -41,7 +41,6 @@ public class CounterAdminView extends JPanel{
 	
 	private void initTitle () {
 		getTitle().setHorizontalAlignment(JLabel.CENTER);
-		//getTitle().setBorder(new LineBorder(Color.BLUE, 3, true));
 	}
 	
 	private void initCounter () {

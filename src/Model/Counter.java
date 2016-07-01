@@ -9,12 +9,12 @@ public class Counter {
 		setTitle("");
 		setCounter(0);
 	}
-	
+
 	public Counter (String title) {
 		setTitle(title);
 		setCounter(0);
 	}
-	
+
 	public Counter (String title, int counter) {
 		setTitle(title);
 		setCounter(counter);
@@ -23,36 +23,29 @@ public class Counter {
 	public void reset () {
 		setCounter(0);
 	}
-	
+
 	public void increase () {
 		increase (1);
 	}
-	
+
 	public void increase (int count) {
-		if (count < 0) {
-			throw new NumberFormatException("The value must be greater than 0");
-		}
-		else {
-			setCounter(getCounter() + count);
+		setCounter(getCounter() + count);
+		if (getCounter() < 0) {
+			setCounter(0);
 		}
 	}
-	
+
 	public void decrease () {
 		decrease(1);
 	}
-	
+
 	public void decrease (int count) {
-		if (count < 0) {
-			throw new NumberFormatException("The value must be greater than 0");
-		}
-		else {
-			setCounter(getCounter() - count);
-			if (getCounter() < 0) {
-				setCounter(0);
-			}
+		setCounter(getCounter() - count);
+		if (getCounter() < 0) {
+			setCounter(0);
 		}
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}

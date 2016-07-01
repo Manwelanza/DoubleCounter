@@ -2,17 +2,16 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.GridLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class CounterClientView extends JPanel{
 	
-	private JLabel titleLabel;
-	private JLabel counterLabel;
+	private CenterMessage centerTitle;
+	private CenterMessage centerCounter;
 	
 	public CounterClientView () {
 		initPanel("", 0);
@@ -27,71 +26,72 @@ public class CounterClientView extends JPanel{
 	}
 	
 	private void initPanel (String title, int counter) {
-		setLayout(new BorderLayout(2, 3));
+	   /*setLayout(new BorderLayout(2, 3));
 		
 		initTitleLabel(title);
 		initCounterLabel(counter);
 		
 		add(getTitleLabel(), BorderLayout.NORTH);
-		add (getCounterLabel(), BorderLayout.CENTER);
+		add (getCounterLabel(), BorderLayout.CENTER);*/
+		setOpaque(false);
+		setLayout(new GridLayout(2, 1));
+		initCenterTitle(title);
+		initCenterCounter(counter);
+		
+		JPanel panel = new JPanel ();
+		panel.setOpaque(false);
+		panel.setLayout(new BorderLayout(2, 10));
+		panel.add(new CenterMessage (), BorderLayout.NORTH);
+		panel.add(getCenterTitle(), BorderLayout.CENTER);
+		panel.add(new CenterMessage (), BorderLayout.SOUTH);
+		add (panel);
+		add (getCenterCounter());
 		setVisible(true);
 	}
 	
-	private void initTitleLabel (String title) {
-		setTitleLabel(new JLabel (title));
-		getTitleLabel().setHorizontalAlignment(JLabel.CENTER);
-		getTitleLabel().setVerticalAlignment(JLabel.CENTER);
-		getTitleLabel().setBorder(new LineBorder(Color.BLUE, 3, true));
+
+	private void initCenterTitle (String title) {
+		setCenterTitle(new CenterMessage(title));
+		getCenterTitle().setBorder(new LineBorder(Color.BLUE, 2, true));
 	}
 	
-	private void initCounterLabel (int counter) {
-		setCounterLabel(new JLabel(Integer.toString(counter)));
-		getCounterLabel().setHorizontalAlignment(JLabel.CENTER);
-		getCounterLabel().setVerticalAlignment(JLabel.CENTER);
-		getCounterLabel().setBorder(new LineBorder(Color.BLACK, 2, true));
-		
-		Font font = new Font ("Dialog", Font.BOLD, 144);
-		getCounterLabel().setFont(font);
+	private void initCenterCounter (int counter) {
+		setCenterCounter(new CenterMessage(Integer.toString(counter)));
+		getCenterCounter().setBorder(new LineBorder(Color.BLACK, 2, true));
 	}
-
+	
 	public void changeCounter (int number) {
-		getCounterLabel().setText(Integer.toString(number));
+		getCenterCounter().setMessage(Integer.toString(number));
+		setVisible(true);
 	}
 	
 	public void changeTitle (String title) {
-		getTitleLabel().setText(title);
+		getCenterTitle().setMessage(title);
+		setVisible(true);
 	}
 	
 	public String getTitle() {
-		return getTitleLabel().getText();
+		return getCenterTitle().getMessage();
 	}
 
 	public void setTitle(String title) {
-		getTitleLabel().setText(title);
+		changeTitle(title);
 	}
 
-	public int getCounter() {
-		return Integer.parseInt(getCounterLabel().getText());
+	public CenterMessage getCenterTitle() {
+		return centerTitle;
 	}
 
-	public void setCounter(int counter) {
-		getCounterLabel().setText(Integer.toString(counter));
+	public void setCenterTitle(CenterMessage centerTitle) {
+		this.centerTitle = centerTitle;
 	}
 
-	public JLabel getTitleLabel() {
-		return titleLabel;
+	public CenterMessage getCenterCounter() {
+		return centerCounter;
 	}
 
-	public void setTitleLabel(JLabel titleLabel) {
-		this.titleLabel = titleLabel;
-	}
-
-	public JLabel getCounterLabel() {
-		return counterLabel;
-	}
-
-	public void setCounterLabel(JLabel counterLabel) {
-		this.counterLabel = counterLabel;
+	public void setCenterCounter(CenterMessage centerCounter) {
+		this.centerCounter = centerCounter;
 	}
 
 	
